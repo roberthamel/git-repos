@@ -42,11 +42,11 @@ func TestAddCmd(t *testing.T) {
 		},
 		{
 			args: []string{"-v", "main"},
-			err:  errors.New("missing required flag --repo-url\ninvalid repo URL. Must start with https:// or git@"),
+			err:  errors.New("- missing required flag --repo-url\n- invalid repo URL. Must start with https:// or git@"),
 		},
 		{
 			args: []string{"-r", "https://github.com"},
-			err: errors.New("missing required flag --version"),
+			err: errors.New("- missing required flag --version"),
 		},
 		{
 			args: []string{"-r", "git@github.com", "-v", "v1.0.0"},
@@ -56,7 +56,7 @@ func TestAddCmd(t *testing.T) {
 		},
 		{
 			args: []string{"-r", "intentionally-incorrect", "-v", "v1.0.0"},
-			err: errors.New("invalid repo URL. Must start with https:// or git@"),
+			err: errors.New("- invalid repo URL. Must start with https:// or git@"),
 		},
 	}
 	for _, tc := range tt {
